@@ -1,0 +1,21 @@
+<div>
+    <span><a href="/AllHobbies">Back to Hobbies</a></s></span> @*change link to dashboard link*@
+    <span><a href="/logout">Logout</a></s></span> @*change link to logout*@
+    <title>Add Hobby</title>
+    
+    <div>
+        @model Hobby
+        <h2>Add Hobby</h2>
+        <form asp-action="AddHobbyPost" asp-controller="Home" method="post"> 
+            
+            <span asp-validation-for="Name"></span>
+            <label asp-for="Name">Name:</label>
+            <input type="text" asp-for="Name"></input>
+
+            <span asp-validation-for="Description"></span>
+            <label asp-for="Description">Description:</label>
+            <input type="text" asp-for="Description"></input>
+
+            <button type="submit">Create</button>
+        </form>
+    </div>

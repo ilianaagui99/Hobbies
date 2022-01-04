@@ -1,0 +1,30 @@
+<div>
+    <span><a href="/logout">Logout</a></s></span> @*change link to logout*@
+    <title>Hobbies</title>
+    <h1>Hobbies</h1>
+    <div>
+         <ul>
+                <table>
+                    <thead>
+                        <th>Hobby</th>
+                        <th>Enthusiasts</th>
+                    </thead>
+                    <tbody>
+                    @if (ViewBag.AllHobbies != null)
+                    {
+                        @foreach (var hobby in ViewBag.AllHobbies)
+                        {
+                    <tr>
+                        <td> <a href="SingleHobby/@hobby.HobbyId">@hobby.Name</a> </td> @*hobby name*@
+                        <td>@hobby.Enthusiasts.Count</td> @*enthusiasts count*@
+                    </tr>
+                        }
+                    }
+                    </tbody>
+                </table>
+        </ul>
+
+    </div>
+  
+    <span><a href="/AddHobby">Create a Hobby</a></s></span> 
+</div>

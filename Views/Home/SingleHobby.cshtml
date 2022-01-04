@@ -1,0 +1,54 @@
+<div>
+    <span><a href="/logout">Logout</a></s></span> 
+    <span><a href="/AllHobbies">Back to Hobbies</a></s></span> 
+    <title>@ViewBag.SpecificHobby.Name</title>
+    <h1>@ViewBag.SpecificHobby.Name</h1>
+    <div>
+        <h3>Description</h3>
+        <p>@ViewBag.SpecificHobby.Description</p>
+    </div>
+    <div>
+        <ul>
+                <table>
+                    <thead>
+                        <th>Enthusiasts</th>
+                        <th>Proficiency Level</th>
+                    </thead>
+                    <tbody>
+                    @if (ViewBag.AllEnthusiasts != null)
+                    {
+                        @foreach (var person in ViewBag.AllEnthusiasts)
+                        {
+                    <tr>
+                        <td> @person.user.FirstName @person.user.LastName </td>
+                        <td>Beginner</td>
+                    </tr>
+                        }
+                    }
+                    </tbody>
+                </table>
+        </ul>
+
+    </div>
+    <div>
+        <label>Proficiency Level:</label>
+        <select>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+        </select>
+    </div>
+    
+    @model Association
+
+    <form asp-action="AddEnthusiast" asp-controller="Home" method="post">
+         <span asp-validation-for="HobbyId"></span>
+        <input type="hidden" asp-for="HobbyId" value="@ViewBag.SpecificHobby.HobbyId">
+        
+        <span asp-validation-for="UserId"></span>
+        <input type="hidden" asp-for="UserId" value="@ViewBag.LoggedInUser">
+
+        <button type="submit">Add To Hobbies</button>
+    </form>
+    <span><a href="/update/@ViewBag.SpecificHobby.HobbyId">Edit</a></s></span> 
+</div>
